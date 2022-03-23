@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use Inertia\Inertia;
 
 class ProductController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): \Inertia\Response
     {
         $products = Product::with(Product::RELATION_AUTHOR);
         $name = $createdAt = $authorName = '';
@@ -29,11 +31,11 @@ class ProductController extends Controller
         }
         
         $products = $products->get();
-        
-        return view('products', [
-            'products' => $products, 
-            'name' => $name, 
-            'createdAt' => $createdAt, 
+
+        return Inertia::render('Product', [
+            'products' => $products,
+            'name' => $name,
+            'createdAt' => $createdAt,
             'authorName' => $authorName
         ]);
     }
