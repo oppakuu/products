@@ -9,11 +9,11 @@ class Product extends Model
 {
     use HasFactory;
     const TABLE         = 'products';
-    
     const NAME          = 'name';
     const DESCRIPTION   = 'description';
     const AUTHOR_ID     = 'author_id';
     const CREATED_AT    = 'created_at';
+    const TEST_DATA     = 'test_data';
 
     const RELATION_AUTHOR  = 'author';
     const AUTHOR_NAME      = 'author_name';
